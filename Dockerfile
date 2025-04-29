@@ -1,9 +1,10 @@
-FROM dawn001/z_mirror:hk_latest
+FROM dawn001/z_mirror:main
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
 
-RUN pip3 uninstall pyrofork -y && pip3 install git+https://github.com/Hrishi2861/pyrofork-2.2.11-peer-fix.git
+COPY requirements.txt .
+RUN zee_env/bin/pip3.12 install --no-cache-dir -r requirements.txt
 
 COPY . .
 
